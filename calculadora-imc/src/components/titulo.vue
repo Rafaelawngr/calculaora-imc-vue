@@ -12,15 +12,12 @@
 .title {
 	display: flex;
 	width: 326px;
-	padding: 10px;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
 	font-family: Unica One;
-	font-size: 24px;
-	font-style: normal;
+	font-size: 2rem;
 	font-weight: 400;
-	line-height: normal;
+	margin-top: 60px;
 	margin-bottom: 80px;
 }
 

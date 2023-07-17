@@ -41,7 +41,7 @@
 	}
 	
 	label {
-		font-size: 14px;
+		font-size: 1rem;
 		font-weight: 400;
 		line-height: normal;
 	}
@@ -53,7 +53,7 @@
 		border: none;
 		background-color: #1D1D1D;
 		padding: 20px;
-		font-size: 12px;
+		font-size: .80rem;
 	}
 
 	input:focus {  
@@ -77,7 +77,7 @@
 		gap: 10px;
 		border: none;
 		color: #ECECEC;
-		font-size: 16px;
+		font-size: 1rem;
 		text-transform: uppercase;
 		font-weight: 500;
 		line-height: normal;
@@ -92,8 +92,8 @@
 	}
 	
 	.btn-clean {
-		font-size: 16px;
-		font-weight: 500;
+		font-size: 1rem;
+		font-weight: 400;
 		border: none;
 		cursor: pointer;
 	}
