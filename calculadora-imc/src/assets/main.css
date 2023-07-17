@@ -1,0 +1,17 @@
+* {
+  background-color: #0F0F0F;
+  color:#ECECEC;
+  font-family: Poppins;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+:root {
+  --botoes: linear-gradient(90deg, #84BFF6 0%, #7181EC 5.68%, #665FE6 12.85%, #5D43E2 21.94%, #AB4E9E 32.45%, #F25861 42.01%, #F7755D 51.10%, #FE9858 72.75%, #FEB794 89.40%, #FEC7B3 100%););
+}
