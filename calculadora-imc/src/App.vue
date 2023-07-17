@@ -1,6 +1,5 @@
 <template>
-  <titulo
-  />
+  <titulo />
 	<formulario />
 </template>
 
