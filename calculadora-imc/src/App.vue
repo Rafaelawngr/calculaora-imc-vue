@@ -1,23 +1,32 @@
 <template>
-  <titulo />
-	<formulario />
+	<div>
+	<titulo/>
+	<formulario/>
+	<resultado v-if="calcularImc"/>
+	</div>
 </template>
 
 <script>
-import titulo from './components/titulo.vue'
-import formulario from './components/formulario.vue'
+
+import Titulo from "@/components/titulo.vue";
+import Formulario from "@/components/formulario.vue";
+import Resultado from "@/components/resultado.vue";
 
 export default {
 	name: 'App',
 	components: {
-		titulo,
-		formulario
+		Resultado,
+		Formulario,
+		Titulo
+
 	},
-	// setup () {
-	// 	const calcularIMC = () => {
-	//		
-	// 	}
-	// }
+	setup() {
+
+		return {
+			
+		};
+
+	}
 }
 </script>
 

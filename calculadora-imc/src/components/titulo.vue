@@ -3,9 +3,26 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
 	<header class="title">
-		Calculadora de IMC
+		{{ titulo }}
 	</header>
 </template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+	
+	setup() {
+		let titulo = 'Calculadora de IMC'
+		// let titulo = "{{ nomeCompleto }}, Seu imc é:"
+		
+		return {
+			titulo
+		}
+	}
+}
+
+</script>
 
 <style scoped>
 
@@ -14,7 +31,7 @@
 	width: 326px;
 	justify-content: center;
 	align-items: center;
-	font-family: Unica One;
+	font-family: Unica One,serif;
 	font-size: 2rem;
 	font-weight: 400;
 	margin-top: 60px;
