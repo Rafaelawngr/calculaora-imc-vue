@@ -3,6 +3,7 @@
 		<TitleComponent :nome="nome"></TitleComponent>
 		<FormComponent @resultado-calculado="showResults"></FormComponent>
 		<ResultsComponent :valor-imc="valorImc"></ResultsComponent>
+		
 	</div>
 </template>
 

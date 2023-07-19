@@ -5,7 +5,7 @@
 	<form @submit.prevent="calcularImc">
 		<fieldset>
 			<label for="name">Nome completo</label>
-			<input type="text" id="name" v-model="nome" name="name">
+			<input type="text" id="name" v-model="nome" name="name" autocomplete="off">
 			<label for="height">Altura</label>
 			<input type="number" step="0.01" id="height" v-model.number="altura" name="height">
 			<label for="weight">Peso</label>

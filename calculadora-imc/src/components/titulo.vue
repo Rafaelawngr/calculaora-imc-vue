@@ -9,13 +9,15 @@
 
 <script>
 
-
 import {ref, watch} from "vue";
 
 export default {
 	name: 'TitleComponent',
 	props: {
-		nome: String
+		nome: {
+			type: String,
+			required: true
+		}
 	},
 	
 	setup(props) {
@@ -24,7 +26,6 @@ export default {
 		
 		watch(() => props.nome, () => {
 			titulo.value = `${props.nome}, Seu IMC é:`;
-			console.log(props.nome)
 		})
 		
 		return {
