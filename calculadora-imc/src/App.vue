@@ -1,29 +1,40 @@
 <template>
 	<div>
-	<titulo/>
-	<formulario/>
-	<resultado v-if="calcularImc"/>
+		<TitleComponent :nome="nome"></TitleComponent>
+		<FormComponent @resultado-calculado="showResults"></FormComponent>
+		<ResultsComponent :valor-imc="valorImc"></ResultsComponent>
 	</div>
 </template>
 
 <script>
 
-import Titulo from "@/components/titulo.vue";
-import Formulario from "@/components/formulario.vue";
-import Resultado from "@/components/resultado.vue";
+import { ref } from "vue";
+import TitleComponent from "@/components/titulo.vue";
+import FormComponent from "@/components/formulario.vue";
+import ResultsComponent from "@/components/resultado.vue";
 
 export default {
 	name: 'App',
 	components: {
-		Resultado,
-		Formulario,
-		Titulo
-
+		ResultsComponent,
+		FormComponent,
+		TitleComponent,
 	},
+	
 	setup() {
-
+	
+		const nome = ref("");
+		const valorImc = ref(0);
+		
+		const showResults = (imc) => {
+			valorImc.value = imc
+		}
+		
+		
 		return {
-			
+			nome,
+			valorImc,
+			showResults
 		};
 
 	}

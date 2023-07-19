@@ -1,5 +1,5 @@
 <template>
-	<titulo/>
+	<TitleComponent></TitleComponent>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 		<div class="result-borda">
 			<div class="result">
 				<div class="valor">
-					{{ valorImc }}
+					{{ displayValorImc }}
 				</div>
 				<div class="classification-title">Classificação:
 				</div>
@@ -23,7 +23,7 @@
 		</div>
 		<div>
 		</div>
-		<button class="btn-voltar"><span class="material-symbols-outlined">
+		<button class="btn-voltar" @click="goBack"><span class="material-symbols-outlined">
 arrow_back
 </span>Voltar
 		</button>
@@ -32,35 +32,52 @@ arrow_back
 
 <script>
 
-import { ref } from 'vue'
+import {ref, watch} from 'vue'
+import TitleComponent from "@/components/titulo.vue";
 
 export default {
-
-	setup() {
+	name:'ResultsComponent',
+	
+	props: {
+		valorImc: Number
+	},
+	components: {
+		TitleComponent
+	},
+	setup(props) {
 		
-		let titulo = 'Seu IMC é:'
-		let valorImc = "";
-		let classificacaoImc = "";
-
-		if (valorImc < 18.5) {
-			classificacaoImc = "Abaixo do peso";
-		} else if (valorImc <= 25) {
-			classificacaoImc = 'Peso normal';
-		} else if (valorImc <= 30) {
-			classificacaoImc = 'Sobrepeso';
-		} else if (valorImc <= 35) {
-			classificacaoImc = 'Obesidade grau I';
-		} else if (valorImc <= 40) {
-			classificacaoImc = 'Obesidade grau II';
-		} else {
-			classificacaoImc = 'Obesidade grau III';
+		const goBack = () => {
+			window.history.back();
 		}
 
+		let classificacaoImc = ref("");
+		let displayValorImc = ref("")
+		
+		watch( () => props.valorImc, (novoValor, valorAntigo) => {
+			if (novoValor !== valorAntigo) {
+				if (props.valorImc < 18.5) {
+					classificacaoImc.value = "Abaixo do peso";
+				} else if (props.valorImc <= 25) {
+					classificacaoImc.value = 'Peso normal';
+				} else if (props.valorImc <= 30) {
+					classificacaoImc.value = 'Sobrepeso';
+				} else if (props.valorImc <= 35) {
+					classificacaoImc.value = 'Obesidade grau I';
+				} else if (props.valorImc <= 40) {
+					classificacaoImc.value = 'Obesidade grau II';
+				} else {
+					classificacaoImc.value = 'Obesidade grau III';
+				}
+
+				displayValorImc.value = props.valorImc.toFixed(1)
+			}
+		
+	});
 		
 		return {
-			titulo,
 			classificacaoImc,
-			valorImc
+			displayValorImc,
+			goBack
 		}
 	}
 }

@@ -2,20 +2,20 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<form>
+	<form @submit.prevent="calcularImc">
 		<fieldset>
 			<label for="name">Nome completo</label>
 			<input type="text" id="name" v-model="nome" name="name">
 			<label for="height">Altura</label>
-			<input type="number" id="height" v-model="altura" name="height">
+			<input type="number" step="0.01" id="height" v-model.number="altura" name="height">
 			<label for="weight">Peso</label>
-			<input type="number" id="weight" v-model="peso" name="weight">
+			<input type="number" id="weight" v-model.number="peso" name="weight">
 
 			<div class="btn">
-				<button @click="$emit('calcularImc')" class="btn-calculate">
+				<button class="btn-calculate">
 					Calcular
 				</button>
-				<button @click="onclose()" class="btn-clean">
+				<button type="button" class="btn-clean" @click="cleanData">
 					Limpar
 				</button>
 			</div>
@@ -24,34 +24,43 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import {ref} from 'vue'
 
 export default {
-	setup() {
+	name: 'FormComponent',
+	emits: [
+		'resultado-calculado'
+	],
+
+	setup(_, {emit}) {
 		const nome = ref("");
-		const altura = ref("");
-		const peso = ref("");
+		const altura = ref(null);
+		const peso = ref(null);
+		
+		const calcularImc = () => {
 
-		const calcularImc = (e) => {
-			e.preventDefault()
+			if (!isNaN(altura.value) && !isNaN(peso.value) && altura.value !== 0 && peso.value !== 0) {
+				let valorImc = peso.value / altura.value ** 2;
+				emit("resultado-calculado", valorImc);
 			
-			const alturaNum = Number(altura.value);
-			const pesoNum = Number(peso.value)
-
-			if (!isNaN(alturaNum) && !isNaN(pesoNum)) {
-			let valorImc = (pesoNum / alturaNum ** 2).toFixed(2);
-	console.log(nome.value, valorImc)
 			} else {
 				alert("Altura e peso devem ser números válidos.");
 			}
 		}
-
+		
+		const cleanData = () => {
+			nome.value = "";
+			altura.value = "";
+			peso.value = "";
+		}
 		
 		return {
 			nome,
 			altura,
 			peso,
-			calcularImc
+			calcularImc,
+			cleanData,
+	
 		};
 	}
 }

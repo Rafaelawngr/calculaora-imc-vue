@@ -8,13 +8,24 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+
+
+import {ref, watch} from "vue";
 
 export default {
+	name: 'TitleComponent',
+	props: {
+		nome: String
+	},
 	
-	setup() {
-		let titulo = 'Calculadora de IMC'
-		// let titulo = "{{ nomeCompleto }}, Seu imc é:"
+	setup(props) {
+		
+		let titulo = ref("calculadora de imc")
+		
+		watch(() => props.nome, () => {
+			titulo.value = `${props.nome}, Seu IMC é:`;
+			console.log(props.nome)
+		})
 		
 		return {
 			titulo
