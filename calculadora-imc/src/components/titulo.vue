@@ -1,37 +1,20 @@
 <template>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+
 	<header class="title">
-		{{ titulo }}
+		{{ $props.titulo }}
 	</header>
 </template>
 
 <script>
 
-import {ref, watch} from "vue";
-
 export default {
 	name: 'TitleComponent',
 	props: {
-		nome: {
-			type: String,
-			required: true
-		}
+    titulo: {
+      type: String,
+      required: true,
+    }
 	},
-	
-	setup(props) {
-		
-		let titulo = ref("calculadora de imc")
-		
-		watch(() => props.nome, () => {
-			titulo.value = `${props.nome}, Seu IMC é:`;
-		})
-		
-		return {
-			titulo
-		}
-	}
 }
 
 </script>

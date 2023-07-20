@@ -1,7 +1,4 @@
 <template>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<form @submit.prevent="calcularImc">
 		<fieldset>
 			<label for="name">Nome completo</label>
@@ -39,9 +36,9 @@ export default {
 		
 		const calcularImc = () => {
 
-			if (!isNaN(altura.value) && !isNaN(peso.value) && altura.value !== 0 && peso.value !== 0) {
+			if (!isNaN(altura.value) && !isNaN(peso.value) && altura.value !== 0 && peso.value !== 0 && altura.value !== null && peso.value !== null ) {
 				let valorImc = peso.value / altura.value ** 2;
-				emit("resultado-calculado", valorImc);
+				emit("resultado-calculado", valorImc, nome.value);
 			
 			} else {
 				alert("Altura e peso devem ser números válidos.");
@@ -60,7 +57,6 @@ export default {
 			peso,
 			calcularImc,
 			cleanData,
-	
 		};
 	}
 }
