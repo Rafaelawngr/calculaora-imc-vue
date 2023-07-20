@@ -29,8 +29,8 @@ export default {
 	font-family: Unica One,serif;
 	font-size: 2rem;
 	font-weight: 400;
-	margin-top: 60px;
-	margin-bottom: 80px;
+	margin-top: 25px;
+	margin-bottom: 50px;
 }
 
 </style>

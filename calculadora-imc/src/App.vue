@@ -1,13 +1,14 @@
 <template>
 	<div>
     
-		<TitleComponent :titulo="tituloPagina"></TitleComponent>
+		<TitleComponent :titulo="tituloPagina" />
     <div v-show="showFirstPage">
-		<FormComponent @resultado-calculado="showResults"></FormComponent>
+		<FormComponent @resultado-calculado="showResults" />
     </div>
     <div v-show="showSecondPage">
-		<ResultsComponent :valorimc="valorImc" @go-back="onGoBack"></ResultsComponent>
+		<ResultsComponent :valorimc="valorImc" @go-back="onGoBack" />
     </div>
+    <HistoricoComponent />
 	</div>
 </template>
 
@@ -17,10 +18,12 @@ import { ref } from "vue";
 import TitleComponent from "@/components/titulo.vue";
 import FormComponent from "@/components/formulario.vue";
 import ResultsComponent from "@/components/resultado.vue"
+import HistoricoComponent from "./components/historico.vue";
 
 export default {
 	name: 'App',
 	components: {
+    HistoricoComponent,
 		ResultsComponent,
 		FormComponent,
 		TitleComponent,

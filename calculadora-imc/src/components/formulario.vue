@@ -69,7 +69,7 @@ fieldset {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 20px;
+	gap: 15px;
 	border: none;
 }
 
@@ -101,10 +101,10 @@ input:focus {
 }
 
 .btn-calculate {
-	margin-top: 80px;
+	margin-top: 30px;
 	display: flex;
 	width: 326px;
-	padding: 15px 0px;
+	padding: 15px 0;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;

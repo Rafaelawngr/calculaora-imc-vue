@@ -84,7 +84,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 40px;
 }
 
 .result-borda {
