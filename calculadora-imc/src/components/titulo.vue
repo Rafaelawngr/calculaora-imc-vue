@@ -31,6 +31,7 @@ export default {
 	font-weight: 400;
 	margin-top: 25px;
 	margin-bottom: 50px;
+  text-align: center;
 }
 
 </style>

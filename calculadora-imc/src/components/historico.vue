@@ -32,10 +32,10 @@ export default {
         <p>IMC</p>
       </div>
       <div class="historico-content" v-for="user in props.historico" :key="user.id">
-        <p>{{ user.nome }}</p> 
-        <p> {{ user.altura }} </p>
-        <p> {{ user.peso }} </p> 
-        <p>{{ user.imc }}</p>
+        <td> {{ user.nome }} </td> 
+        <td> {{ user.altura }} </td>
+        <td> {{ user.peso }} </td> 
+        <td> {{ user.imc }} </td>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@ export default {
   border: 2px solid #1D1D1D;
   border-radius: 16px;
   overflow-y: scroll;
-  height: 20vh;
+  height: 23vh;
 
 }
 
@@ -78,12 +78,11 @@ export default {
 
 .historico-content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 1px solid #1d1d1d;
   font-size: .75rem;
   font-weight: lighter;
   list-style: none;
-  gap: 50px;
 }
 
 .historico-legend {
@@ -93,5 +92,10 @@ export default {
   gap: 20px;
   align-items: center;
 }
+
+td {
+  padding: 10px 0;
+}
+
 
 </style>

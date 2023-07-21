@@ -2,22 +2,12 @@
   <div class="content">
     <div class="result-borda">
       <div class="result">
-        <div class="valor">
-          {{ displayValorImc }}
-        </div>
-        <div class="classification-title">Classificação:
-        </div>
-        <div class="classification">
-          {{ classificacaoImc }}
-        </div>
+        <h1 class="valor">{{ displayValorImc }}</h1>
+        <p class="classification-title">Classificação:</p>
+        <h2 class="classification">{{ classificacaoImc }}</h2>
       </div>
     </div>
-    <div>
-    </div>
-    <button class="btn-voltar" @click="goBack"><span class="material-symbols-outlined">
-arrow_back
-</span>Voltar
-    </button>
+  <div><button class="btn-voltar" @click="goBack"><span class="material-symbols-outlined">arrow_back</span>Voltar</button></div>
   </div>
 </template>
 
@@ -44,7 +34,7 @@ export default {
 
     let classificacaoImc = ref("");
     let displayValorImc = ref("")
-    
+
 
     watch(() => props.valorimc, (novoValor, valorAntigo) => {
       if (novoValor !== valorAntigo) {
@@ -110,11 +100,11 @@ export default {
 }
 
 .valor {
+  margin: 0;
   font-family: 'Trispace', sans-serif;
-  font-size: 80px;
+  font-size: 75px;
   font-weight: 700;
   background-color: transparent;
-  padding: 20px;
 }
 
 .classification-title {

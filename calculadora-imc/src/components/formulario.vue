@@ -2,11 +2,11 @@
 	<form @submit.prevent="calcularImc">
 		<fieldset>
 			<label for="name">Nome</label>
-			<input type="text" id="name" v-model="nome" name="name" autocomplete="off">
+			<input type="text" id="name" v-model="nome" name="name" maxlength="10" autocomplete="off">
 			<label for="height">Altura</label>
-			<input type="number" step="0.01" id="height" v-model.number="altura" name="height">
+			<input type="number" step="0.01" id="height" v-model.number="altura" name="height" placeholder="m">
 			<label for="weight">Peso</label>
-			<input type="number" id="weight" v-model.number="peso" name="weight">
+			<input type="number" id="weight" v-model.number="peso" name="weight" placeholder="kg">
 
 			<div class="btn">
 				<button class="btn-calculate">
@@ -135,11 +135,11 @@ input:focus {
 	border-radius: 10px;
 	background: var(--botoes);
 	cursor: pointer;
+	transition: 200ms linear;
 }
 
 .btn-calculate:hover {
 	transform: scale(1.05);
-	transition: 200ms linear;
 }
 
 .btn-clean {
@@ -147,12 +147,12 @@ input:focus {
 	font-weight: 400;
 	border: none;
 	cursor: pointer;
+	transition: 200ms linear;
 }
 
 .btn-clean:hover {
 	color: var(--botoes);
 	transform: scale(1.05);
-	transition: 200ms linear;
 }
 
 input[type=number]::-webkit-inner-spin-button,
