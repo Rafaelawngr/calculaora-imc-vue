@@ -44,8 +44,7 @@ export default {
 
     let classificacaoImc = ref("");
     let displayValorImc = ref("")
-
-    console.log(props.valorimc)
+    
 
     watch(() => props.valorimc, (novoValor, valorAntigo) => {
       if (novoValor !== valorAntigo) {
@@ -64,7 +63,6 @@ export default {
         }
 
         displayValorImc.value = props.valorimc.toFixed(1)
-        console.log(classificacaoImc.value, displayValorImc.value)
       }
 
     });

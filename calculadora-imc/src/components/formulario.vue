@@ -1,7 +1,7 @@
 <template>
 	<form @submit.prevent="calcularImc">
 		<fieldset>
-			<label for="name">Nome completo</label>
+			<label for="name">Nome</label>
 			<input type="text" id="name" v-model="nome" name="name" autocomplete="off">
 			<label for="height">Altura</label>
 			<input type="number" step="0.01" id="height" v-model.number="altura" name="height">
@@ -18,6 +18,7 @@
 			</div>
 		</fieldset>
 	</form>
+
 </template>
 
 <script>
@@ -26,25 +27,41 @@ import {ref} from 'vue'
 export default {
 	name: 'FormComponent',
 	emits: [
-		'resultado-calculado'
+		'resultado-calculado',
+    'historico-imc'
 	],
 
+  props: {
+    
+    },
+    
 	setup(_, {emit}) {
 		const nome = ref("");
 		const altura = ref(null);
 		const peso = ref(null);
+    const usersArray = ref([]);
 		
 		const calcularImc = () => {
+    let valorImc;
 
 			if (!isNaN(altura.value) && !isNaN(peso.value) && altura.value !== 0 && peso.value !== 0 && altura.value !== null && peso.value !== null ) {
-				let valorImc = peso.value / altura.value ** 2;
+				valorImc = peso.value / altura.value ** 2;
 				emit("resultado-calculado", valorImc, nome.value);
 			
 			} else {
 				alert("Altura e peso devem ser números válidos.");
 			}
+     
+      usersArray.value.push({
+        id: Date.now(),
+        nome: nome.value,
+        altura: altura.value,
+        peso: peso.value,
+        imc: valorImc.toFixed(1)
+      })
+        emit("historico-imc", usersArray.value);
 		}
-		
+    
 		const cleanData = () => {
 			nome.value = "";
 			altura.value = "";
@@ -57,6 +74,7 @@ export default {
 			peso,
 			calcularImc,
 			cleanData,
+      usersArray
 		};
 	}
 }

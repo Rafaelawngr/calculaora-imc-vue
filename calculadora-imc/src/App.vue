@@ -3,12 +3,12 @@
     
 		<TitleComponent :titulo="tituloPagina" />
     <div v-show="showFirstPage">
-		<FormComponent @resultado-calculado="showResults" />
+		<FormComponent  @historico-imc="mostrarHistorico" @resultado-calculado="showResults" />
     </div>
     <div v-show="showSecondPage">
 		<ResultsComponent :valorimc="valorImc" @go-back="onGoBack" />
     </div>
-    <HistoricoComponent />
+    <HistoricoComponent :historico="usersArray"/>
 	</div>
 </template>
 
@@ -35,6 +35,7 @@ export default {
 		const valorImc = ref(0);
     let showFirstPage = ref (true)
     let showSecondPage = ref (false)
+    let usersArray = ref ([])
 		
 		const showResults = (imc, nome) => {
 			valorImc.value = imc
@@ -49,6 +50,9 @@ export default {
       tituloPagina.value = `Calculadora de IMC`;
     }
     
+    const mostrarHistorico = (array) => {
+      usersArray.value = array
+    }
 		
 		return {
 			valorImc,
@@ -56,7 +60,9 @@ export default {
       showSecondPage,
       tituloPagina,
 			showResults,
-      onGoBack
+      onGoBack,
+      mostrarHistorico,
+      usersArray
 		};
 
 	}
